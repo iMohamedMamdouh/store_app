@@ -15,11 +15,11 @@ class ProductModel {
     required this.rating,
   });
 
-  factory ProductModel.formJson(jsonData) {
+  factory ProductModel.fromJson(Map<String, dynamic> jsonData) {
     return ProductModel(
       id: jsonData['id'],
       title: jsonData['title'],
-      price: jsonData['price'],
+      price: jsonData['price'].toDouble(), // Cast to double
       description: jsonData['description'],
       image: jsonData['image'],
       rating: RatingModel.fromJson(jsonData['rating']),
@@ -36,9 +36,9 @@ class RatingModel {
     required this.count,
   });
 
-  factory RatingModel.fromJson(jsonData) {
+  factory RatingModel.fromJson(Map<String, dynamic> jsonData) {
     return RatingModel(
-      rate: jsonData['rate'],
+      rate: jsonData['rate'].toDouble(), // Cast to double
       count: jsonData['count'],
     );
   }
